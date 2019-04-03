@@ -62,7 +62,7 @@ public class Login_GUI {
 		GridBagConstraints constraints = new GridBagConstraints();
 
 		Font welcomeFont = new Font("SansSerif", Font.BOLD, 25);
-        JLabel welcome1 = new JLabel("Welcome to the Rise Institute: Maker Space!");
+        JLabel welcome1 = new JLabel("Welcome to the Rise Institute: Makerspace!");
         JLabel welcome2 = new JLabel("Please Sign In!");
         welcome1.setFont(welcomeFont);
         welcome2.setFont(welcomeFont);
