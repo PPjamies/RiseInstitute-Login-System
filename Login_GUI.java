@@ -18,11 +18,15 @@ import javax.swing.event.DocumentListener;
 import com.healthmarketscience.jackcess.Database;
 import com.healthmarketscience.jackcess.DatabaseBuilder;
 import com.healthmarketscience.jackcess.Table;
+
+import testing_connection.AccessConectivity;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.lang.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -62,7 +66,7 @@ public class Login_GUI {
 		GridBagConstraints constraints = new GridBagConstraints();
 
 		Font welcomeFont = new Font("SansSerif", Font.BOLD, 25);
-        JLabel welcome1 = new JLabel("Welcome to the Rise Institute: Makerspace!");
+        JLabel welcome1 = new JLabel("Welcome to the Rise Institute: Maker Space!");
         JLabel welcome2 = new JLabel("Please Sign In!");
         welcome1.setFont(welcomeFont);
         welcome2.setFont(welcomeFont);
@@ -150,7 +154,7 @@ public class Login_GUI {
 			public void insertUpdate(DocumentEvent e) {
 				changed();
 			}
-			public void changed() {
+			private void changed() {
 				if (sid_txt.getText().equals("")){
 					submit.setEnabled(false);
 				}else if(!fname_txt.getText().equals("") &&
@@ -257,6 +261,7 @@ public class Login_GUI {
 
 //submit button
       	submit = new JButton("submit");
+  
       	submit.setEnabled(false);
         constraints.insets = new Insets(400,200,0,300);
 		constraints.gridheight = 1;
@@ -275,12 +280,11 @@ public class Login_GUI {
         		        String lname = lname_txt.getText().trim().toLowerCase();
         		        String sid = sid_txt.getText().trim().toLowerCase();
         		        String fix_email = email_txt.getText().trim().toLowerCase().replaceAll("@bc.edu", "@bellevuecollege.edu");
-        		        Calendar cal = Calendar.getInstance();
-        		               		            			        				
-    					Database db = DatabaseBuilder.open(new File("C:\\Users\\Pazuz\\Documents\\RISE SIGN IN\\sign_in.accdb"));
-    					Table table = db.getTable("sign_in");
-    					table.addRow(fname,lname,sid,fix_email,cal);
-    					db.close();		      
+        		        
+        		        ArrayList<String> list = new ArrayList<>();
+        		        list.add(sid);list.add(fname);list.add(lname);list.add(fix_email);
+        		        AccessConectivity newActivity = new AccessConectivity(list);
+        		        
     				}catch(Exception err) {
     					err.printStackTrace(System.err);
     				}
