@@ -22,8 +22,3 @@ ADMINISTRATOR OF THE DIGITAL SIGN-IN SHEET
 			You will need to manually export the data to the shairpoint.
 		
 		-ACCESS SUPPORTS SQL QUERIES. Three queries have already been built, but you can build as much as you want.
-		
-		
-	How To Launch The Digital Sign-in Sheet Cleanly Through The Command Line:
-		
-		-
